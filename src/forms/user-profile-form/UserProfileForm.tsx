@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
-import { User } from "types";
+import { User } from "@/types";
 import { useEffect } from "react";
 import { Input } from "@/components/ui/input";
 

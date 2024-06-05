@@ -4,18 +4,19 @@ import UserNameMenu from "./UserNameMenu";
 
 export default function MainNav() {
 	const { loginWithRedirect, isAuthenticated } = useAuth0();
+
 	return (
 		<span className="flex space-x-2 items-center">
 			{isAuthenticated ? (
 				<UserNameMenu />
-			):(
-			<Button
-				variant="ghost"
-				className="font-bold hover:text-orange-500 hover:bg-white"
-				onClick={async () => await loginWithRedirect()}
-			>
-				Log In
-			</Button>
+			) : (
+				<Button
+					variant="ghost"
+					className="font-bold hover:text-white hover:bg-darkgreen"
+					onClick={async () => await loginWithRedirect()}
+				>
+					Log In
+				</Button>
 			)}
 		</span>
 	);

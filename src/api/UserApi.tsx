@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
-import { User } from "types";
+import { User } from "@/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -15,6 +15,7 @@ export const useCreateUser = () => {
 
 	const createUserRequest = async (user: CreateUserRequest) => {
 		const accesToken = await getAccessTokenSilently();
+
 		const response = await fetch(API_BASE_URL + "/api/user", {
 			method: "POST",
 			headers: {
@@ -35,6 +36,8 @@ export const useCreateUser = () => {
 		isLoading,
 		isError,
 		isSuccess,
+		error,
+		reset
 	} = useMutation(createUserRequest);
 
 	return {
@@ -42,6 +45,8 @@ export const useCreateUser = () => {
 		isLoading,
 		isError,
 		isSuccess,
+		error,
+		reset
 	};
 }; // FIn de userCreateUser
 
@@ -56,7 +61,6 @@ export const useUpdateUser = () => {
 	const { getAccessTokenSilently } = useAuth0();
 
 	const updateUserRequest = async (formData: UpdateUserRequest) => {
-		console.log(formData);
 		const accessToken = await getAccessTokenSilently();
 		const response = await fetch(API_BASE_URL + "/api/user", {
 			method: "PUT",
@@ -112,7 +116,7 @@ export const useUser = () => {
 		});
 
 		if (!res.ok) {
-			throw new Error("Error al actualizar el perfil del usuario");
+			throw new Error("Error al obtener el perfil del usuario");
 		}
 
 		return res.json();

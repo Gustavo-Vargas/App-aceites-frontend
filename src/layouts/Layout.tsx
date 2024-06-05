@@ -6,9 +6,10 @@ type Props = {
 	children: React.ReactNode;
 	showHero?: boolean;
 };
+
 function Layout({ children, showHero = false }: Props) {
 	return (
-		<div className="flex flex-col min-h-screen">
+		<div className="flex flex-col min-h-screen bg-sage">
 			<Header />
 			{showHero && <Hero />}
 			<div

@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 import {
 	Sheet,
 	SheetContent,
@@ -6,7 +6,7 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "./ui/sheet";
-import { Separator } from "./ui/separator";
+import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import MobileNavLinks from "./MobileNavLinks";
@@ -16,28 +16,29 @@ export default function MobileNav() {
 	return (
 		<Sheet>
 			<SheetTrigger>
-				<Menu className="text-orange-500" />
+				<Menu className="text-sage" />
 			</SheetTrigger>
-			<SheetContent className="space-y-3">
+			<SheetContent className="space-y-3 bg-cream">
 				<SheetTitle>
 					{isAuthenticated ? (
-						<span className="flex items-center font-bold gap-2">
-							{user?.email}
-						</span>
+						<span>{user?.email}</span>
 					) : (
-						<span>Bienvenidos a AppITZFood.com</span>
+						<span className="font-bold text-2xl text-darkgreen">
+							Bienveindos a los Mejores Aceites Naturales
+						</span>
 					)}
 				</SheetTitle>
-				<Separator />
+
+				<Separator className="border-lightgray" />
 				<SheetDescription className="flex flex-col gap-4">
 					{isAuthenticated ? (
 						<MobileNavLinks />
 					) : (
 						<Button
 							onClick={() => loginWithRedirect()}
-							className="flex-1 font-bold bg-orange-500"
+							className="flex-1 font-bold bg-earthbrown text-white"
 						>
-							Login
+							LogIn
 						</Button>
 					)}
 				</SheetDescription>

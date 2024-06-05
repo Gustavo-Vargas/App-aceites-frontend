@@ -11,7 +11,7 @@ export default function AuthCallBackPage() {
 
 	useEffect(() => {
 		if (user?.sub && user?.email && !hasCreateUser.current) {
-			console.log(user, hasCreateUser.current)
+			// console.log(user, hasCreateUser.current)
 			createUser({ auth0Id: user.sub, email: user.email });
 			hasCreateUser.current = true;
 		}
